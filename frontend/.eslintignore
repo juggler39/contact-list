@@ -1,0 +1,9 @@
+node_modules
+dist
+jest.config.js
+fixtures
+coverage
+__snapshots__
+webpack.config.js
+index.html
+static.html
