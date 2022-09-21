@@ -7,7 +7,7 @@
         "password": "123456"
       }
     ],
-    "posts": [
+    "contacts": [
       {
         "id": 1,
         "title": "My best post"
