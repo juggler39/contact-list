@@ -26,4 +26,8 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'logout', {}, httpOptions);
   }
+
+  test(): Observable<any> {
+    return this.http.get(AUTH_API + 'contacts');
+  }
 }

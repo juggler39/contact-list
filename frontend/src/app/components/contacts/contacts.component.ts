@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-contacts',
@@ -9,9 +10,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    this.userService.getUserContacts().subscribe(x => console.log(x));
   }
 
 }

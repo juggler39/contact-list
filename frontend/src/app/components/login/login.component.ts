@@ -1,11 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { StorageService } from '@services/storage.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  imports: [CommonModule, RouterModule],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -36,4 +40,8 @@ export class LoginComponent implements OnInit {
     this.storageService.clean();
   }
 
+  test() {
+    this.authService.test().subscribe(x => console.log(x));
+
+  }
 }

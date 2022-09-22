@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import type { Route } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard'
 
 const appRoutes: Route[] = [
   {
     path: '',
-    loadComponent: () => import('@components/contacts/contacts.component').then(c => c.ContactsComponent)
+    loadComponent: () => import('@components/contacts/contacts.component').then(c => c.ContactsComponent), canActivate: [AuthGuard]
   },
   {
     path: 'login',

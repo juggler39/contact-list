@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
+import { httpInterceptorProviders } from '@helpers/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {})
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
