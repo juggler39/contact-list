@@ -1,1 +1,10 @@
-<p>contact-list works!</p>
+<p>contacts works!</p>
+
+<button (click)="addContact()">Add Contact</button>
+
+<h2>Books</h2>
+<app-list class="book-list" [contacts]="contacts$ | async"></app-list>
+
+<h2>My Collection</h2>
+<app-collection class="book-collection" [contacts]="contactList$ | async" (remove)="onRemove($event)">
+</app-collection>

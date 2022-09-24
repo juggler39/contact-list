@@ -3,6 +3,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { StorageService } from '@services/storage.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { decrement, increment, reset } from '@store/counter.actions';
 
 
 @Component({
@@ -14,15 +17,20 @@ import { StorageService } from '@services/storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
+  count$: Observable<number>
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService,
+    private storageService: StorageService,
+    private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+  }
 
   ngOnInit(): void {
 
   }
 
   logIn() {
-    this.authService.login('9230001122', '123456').subscribe({
+    this.authService.login('john', '123456').subscribe({
       next: data => {
         this.storageService.saveUser(data);
       },
@@ -32,16 +40,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  isLoggedIn():void {
+  isLoggedIn(): void {
     console.log(this.storageService.isLoggedIn());
   }
 
-  logOut():void {
+  logOut(): void {
     this.storageService.clean();
   }
 
-  test() {
-    this.authService.test().subscribe(x => console.log(x));
+  increment() {
+    this.store.dispatch(increment());
+  }
 
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+
+  reset() {
+    this.store.dispatch(reset());
   }
 }

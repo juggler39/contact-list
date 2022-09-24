@@ -27,7 +27,7 @@ server.use(middlewares);
 server.post('/auth/login', (req, res) => {
     const payload: { username: string; password: string } = req.body;
     const user: UserInterface | null =
-        (router.db.get('users') as any).find({ phone: payload.username, password: payload.password }) ?? null;
+        (router.db.get('users') as any).find({ username: payload.username, password: payload.password }) ?? null;
     if (user) {
         const accessToken = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: JWT_EXPIRES_IN });
         res.status(200).json({ accessToken, id: user.id });

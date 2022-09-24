@@ -8,6 +8,12 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { httpInterceptorProviders } from '@helpers/http.interceptor';
+import { EffectsModule } from '@ngrx/effects';
+import { counterReducer } from '@store/counter.reducer';
+import { contactsReducer } from '@store/contacts.reducer';
+import { listReducer } from '@store/list.reducer';
+import { ContactEffects } from '@store/contacts.effects';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +25,8 @@ import { httpInterceptorProviders } from '@helpers/http.interceptor';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({ count: counterReducer, contacts: contactsReducer, list: listReducer }),
+    EffectsModule.forRoot([ContactEffects])
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
