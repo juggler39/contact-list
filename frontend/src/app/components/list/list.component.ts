@@ -12,5 +12,5 @@ import { CommonModule } from '@angular/common';
 export class ListComponent {
 
   @Input() contacts: ReadonlyArray<Contact> | null = [];
-  @Output() add = new EventEmitter<string>();
+  @Output() remove = new EventEmitter<string>();
 }

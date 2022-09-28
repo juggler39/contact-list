@@ -14,9 +14,15 @@ export class ContactsService {
   }
 
   addContact(contact: Partial<Contact>): Observable<Contact> {
-    console.log(contact);
-
     return this.http.post<Contact>(this.constants.AUTH_API + 'contacts',  contact );
   }
+
+  deleteContact(contactId: string): Observable<Contact> {
+    return this.http.delete<Contact>(this.constants.AUTH_API + 'contacts' + '/' + contactId);
+  }
+
+  updateContact(contact: Partial<Contact>): Observable<any> {
+    return this.http.patch(this.constants.AUTH_API + 'contacts' + '/' + contact.id, contact);
+}
 }
 

@@ -11,7 +11,6 @@ import { httpInterceptorProviders } from '@helpers/http.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from '@store/counter.reducer';
 import { contactsReducer } from '@store/contacts.reducer';
-import { listReducer } from '@store/list.reducer';
 import { ContactEffects } from '@store/contacts.effects';
 
 
@@ -25,7 +24,7 @@ import { ContactEffects } from '@store/contacts.effects';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ count: counterReducer, contacts: contactsReducer, list: listReducer }),
+    StoreModule.forRoot({ count: counterReducer, contacts: contactsReducer}),
     EffectsModule.forRoot([ContactEffects])
   ],
   providers: [httpInterceptorProviders],

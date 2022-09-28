@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ContactsService } from '@services/contacts.service';
-import { EMPTY, of } from 'rxjs';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
-import { loadContacts, loadContactsError, loadContactsSuccess, addContact, addContactSuccess } from './contacts.actions';
+import { map, catchError, of, switchMap } from 'rxjs';
+import { loadContacts, loadContactsError, loadContactsSuccess, addContact, addContactSuccess, deleteContact, deleteContactSuccess, addContactError, deleteContactError, updateContact, updateContactError, updateContactSuccess } from './contacts.actions';
 
 
 @Injectable()
@@ -16,19 +15,42 @@ export class ContactEffects {
 
   loadContacts$ = createEffect(() => this.actions$.pipe(
     ofType(loadContacts),
-    mergeMap(() => this.contactsService.loadContacts()
+    switchMap(() => this.contactsService.loadContacts()
       .pipe(
         map(contacts => loadContactsSuccess({ contacts })),
         catchError(() => of(loadContactsError()))
       ))
   ));
 
-    addContact$ = createEffect(() => this.actions$.pipe(
-      ofType(addContact),
-      mergeMap((x) => this.contactsService.addContact(x.contact)
+  addContact$ = createEffect(() => this.actions$.pipe(
+    ofType(addContact),
+    switchMap((x) => this.contactsService.addContact(x.contact)
       .pipe(
         map(() => addContactSuccess()),
-        catchError(() => of(loadContactsError()))
+        catchError(() => of(addContactError()))
       ))
-    ));
+  ));
+
+  deleteContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteContact),
+      switchMap((x) => this.contactsService.deleteContact(x.contactId)
+        .pipe(
+          map(() => deleteContactSuccess()),
+          catchError(() => of(deleteContactError()))
+        ))
+    )
+  );
+
+  updateContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateContact),
+      switchMap((x) => this.contactsService.updateContact(x.contact)
+        .pipe(
+          map(() => updateContactSuccess()),
+          catchError(() => of(updateContactError()))
+        ))
+    )
+  );
+
 }

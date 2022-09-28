@@ -5,7 +5,7 @@ import { ListComponent } from '@components/list/list.component';
 import { Contact } from '@models/contact.model';
 import { Store } from '@ngrx/store';
 import { ContactsService } from '@services/contacts.service';
-import { addContact, loadContacts, removeContact } from '@store/contacts.actions';
+import { addContact, loadContacts, deleteContact, updateContact } from '@store/contacts.actions';
 import { selectContactList } from '@store/contacts.selectors';
 import { Observable } from 'rxjs';
 
@@ -19,15 +19,12 @@ import { Observable } from 'rxjs';
 })
 export class ContactsComponent implements OnInit {
 
-  //contacts$ = this.store.select(selectContacts);
   contacts$: Observable<Contact[]> = this.store.select(state => state.contacts);
   contactList$ = this.store.select(selectContactList);
 
   constructor(private store: Store<{ contacts: Contact[] }>, private contactsService: ContactsService) { }
 
   ngOnInit() {
-    // this.contactsService.getContacts()
-    // .subscribe((contacts) => this.store.dispatch(retrievedContactList({ contacts})));
     this.store.dispatch(loadContacts());
 
   }
@@ -39,10 +36,18 @@ export class ContactsComponent implements OnInit {
         phone: 123123123
       }
     }));
+  }
 
+  editContact() {
+    this.store.dispatch(updateContact({
+      contact: {
+        id: "2",
+        name: "Updated"
+      }
+    }));
   }
 
   onRemove(contactId: string) {
-    this.store.dispatch(removeContact({ contactId }));
+    this.store.dispatch(deleteContact({ contactId }));
   }
 }
