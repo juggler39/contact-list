@@ -4,7 +4,7 @@
       "id": 1,
       "name": "John Dow",
       "email": "john.dow@example.com",
-      "username": "john",
+      "username": "user",
       "password": "123456"
     }
   ],
@@ -17,7 +17,7 @@
     },
     {
       "id": "2",
-      "name": "John Adams",
+      "name": "Updated",
       "email": "john.adams@example.com",
       "phone": "3456456456"
     },
@@ -32,6 +32,12 @@
       "email": "test@example.com",
       "phone": 123123123,
       "id": "z5SFepY"
+    },
+    {
+      "name": "Test",
+      "email": "test@example.com",
+      "phone": 123123123,
+      "id": "SgPCLgv"
     }
   ]
 }
