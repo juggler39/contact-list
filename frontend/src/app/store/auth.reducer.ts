@@ -1,37 +1,13 @@
-import { createReducer, on, Action } from '@ngrx/store';
-import * as authActions from './auth.actions';
+import { createReducer, on } from '@ngrx/store';
+import { loginComplete, logout } from './auth.actions';
 
-export const authFeatureName = 'auth';
-
-export interface AuthState {
-  profile: any;
-  isLoggedIn: boolean;
-}
-
-export const initialAuthState: AuthState = {
-  isLoggedIn: false,
-  profile: null,
+export const initialAuthState = {
+  isLoggedIn: false
 };
 
-const authReducerInternal = createReducer(
+export const authReducer = createReducer(
   initialAuthState,
 
-  on(authActions.loginComplete, (state, { profile, isLoggedIn }) => {
-    return {
-      ...state,
-      profile,
-      isLoggedIn,
-    };
-  }),
-  on(authActions.logout, (state, {}) => {
-    return {
-      ...state,
-      profile: null,
-      isLoggedIn: false,
-    };
-  })
+  on(loginComplete, () => { return { isLoggedIn: true } }),
+  on(logout, () => { return { isLoggedIn: false } }),
 );
-
-export function authReducer(state: AuthState | undefined, action: Action) {
-  return authReducerInternal(state, action);
-}

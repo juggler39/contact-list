@@ -1,18 +1,24 @@
-<p>login works!</p>
-
-<button (click)="isLoggedIn()">Click</button>
-
-<button (click)="logOut()">Log out</button>
-
-<button (click)="logIn()">Log in</button>
-
-
-<a routerLink = "/">Home</a>
-
-<div>Current Count: {{ count$ | async }}</div>
-
-<button (click)="increment()">Increment</button>
-
-<button (click)="decrement()">Decrement</button>
-
-<button (click)="reset()">Reset Counter</button>
+<mat-card>
+  <mat-card-content>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <h2>Log In</h2>
+      <span>username: user, password: 123456</span>
+      <mat-error *ngIf="!loginValid">
+        The username and password were not recognized
+      </mat-error>
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+        <mat-error>
+          Please provide a valid username
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,9 +1,0 @@
-<div
-  *ngFor="let contact of contacts"
->
-  <p>{{contact?.name}}</p><span> by {{contact?.email}}</span>
-  <button
-    (click)="remove.emit(contact?.id)"
-    data-test="remove-button"
-  >Remove from Collection</button>
-</div>

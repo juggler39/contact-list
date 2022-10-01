@@ -12,16 +12,7 @@ const httpOptions = {
 })
 
 export class AuthService {
-  doLogin(): any {
-    throw new Error('Method not implemented.');
-  }
-  checkAuth() {
-    throw new Error('Method not implemented.');
-  }
-  userData: any;
-  signOut(): void {
-    throw new Error('Method not implemented.');
-  }
+
   constructor(private http: HttpClient, private constants: AppConstants) { }
 
   login(username: string, password: string): Observable<any> {
