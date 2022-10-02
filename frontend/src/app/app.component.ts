@@ -9,7 +9,7 @@ import { map, Observable, tap } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Contact list';
   isLoggedIn$: Observable<boolean>;
 
@@ -18,10 +18,6 @@ export class AppComponent implements OnInit {
       map((x) => x.isLoggedIn),
       tap(x => console.log(x))
     );
-  }
-  ngOnInit() {
-
-
   }
 
   logout() {
