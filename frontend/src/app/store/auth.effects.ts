@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { login, loginComplete, logout } from './auth.actions';
+import { checkAuth, login, loginComplete, logout } from './auth.actions';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { AuthService } from '@services/auth.service';
@@ -35,12 +35,32 @@ export class AuthEffects {
     ))
   ));
 
-  loginComplete = createEffect(() => this.actions$.pipe(
+  loginComplete$ = createEffect(() => this.actions$.pipe(
     ofType(loginComplete),
     tap(() => {
       console.log('loginComplete');
       this.router.navigate(['']);
-    })),
+    }),),
+    { dispatch: false }
+  );
+
+  checkAuth$ = createEffect(() => this.actions$.pipe(
+    ofType(checkAuth),
+    tap(() => {
+      console.log('checkAuth');
+    }),
+    map(loginComplete),
+    map(() => this.storageService.isLoggedIn()),
+    map((x) => {console.log('map', x);
+      if (x) {
+        console.log('sdfasdf');
+
+        return loginComplete()
+      } else return loginComplete()
+    }),
+
+  ),
+
     { dispatch: false }
   );
 

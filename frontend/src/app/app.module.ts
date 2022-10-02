@@ -15,11 +15,10 @@ import { AuthEffects } from '@store/auth.effects';
 import { LoginComponent } from '@components/login/login.component';
 import { SharedModule } from './shared/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,

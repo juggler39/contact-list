@@ -1,44 +1,9 @@
-<button (click)="addContact()">Add Contact</button>
-
 <h2>Contacts</h2>
+
+<button (click)="addContact()">Add Contact</button>
 <!-- <app-list class="book-list" (remove)="onRemove($event)" [contacts]="contacts$ | async"></app-list> -->
+<app-contact-table [contacts$]="contacts$"
+                   (onEdit)="onEdit($event)"></app-contact-table>
 
 
-<table mat-table *ngIf="contacts$" [dataSource]="contacts$" class="contact-table mat-elevation-z8">
-
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"><span class="mobile-label">Name:</span> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> email </th>
-    <td mat-cell *matCellDef="let element"> <span class="mobile-label">Email:</span> {{element.email}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="phone">
-    <th mat-header-cell *matHeaderCellDef> Phone </th>
-    <td mat-cell *matCellDef="let element"> <span class="mobile-label">Phone:</span> {{element.phone}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-button (click)="onEdit(element.id)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-button (click)="onRemove(element.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<app-contact-dialog></app-contact-dialog>

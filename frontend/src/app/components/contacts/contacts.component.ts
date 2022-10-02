@@ -13,16 +13,14 @@ import { Observable } from 'rxjs';
 export class ContactsComponent implements OnInit {
 
   contacts$: Observable<Contact[]> = this.store.select(state => state.contacts);
-  animal: string;
-  name: string;
-
-  displayedColumns: string[] = ['name', 'email', 'phone', 'actions'];
 
   constructor(private store: Store<{ contacts: Contact[] }>) { }
 
   ngOnInit() {
     this.store.dispatch(loadContacts());
   }
+
+
   addContact() {
     this.store.dispatch(addContact({
       contact: {
@@ -41,11 +39,6 @@ export class ContactsComponent implements OnInit {
         name: "Updated"
       }
     }));
-    this.store.dispatch(loadContacts());
-  }
-
-  onRemove(contactId: string) {
-    this.store.dispatch(deleteContact({ contactId }));
     this.store.dispatch(loadContacts());
   }
 
