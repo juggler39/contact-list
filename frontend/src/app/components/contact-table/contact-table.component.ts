@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Contact } from '@models/contact.model';
 import { Observable } from 'rxjs';
 
@@ -13,8 +16,9 @@ export class ContactTableComponent {
   name: string;
   displayedColumns: string[] = ['name', 'email', 'phone', 'actions'];
 
-  @Input() contacts$: Observable<Contact[]>;
 
-  @Output() onEdit = new EventEmitter<string>();
+  @Input() contacts$: Observable<Contact[]>;
+  @Output() onEdit = new EventEmitter<Contact>();
+
 
 }

@@ -1,13 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { login, logout } from '@store/auth.actions';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { login } from '@store/auth.actions';
+
 
 
 @Component({
@@ -18,14 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class LoginComponent {
 
-  public loginValid = true;
+  public loginInalid = false;
   public username = '';
   public password = '';
 
   constructor(private store: Store<{ auth: { isLoggedIn: boolean } }>) { }
 
   public onSubmit(): void {
-    this.loginValid = true;
     this.store.dispatch(login({ username: this.username, password: this.password }));
+    this.loginInalid = true;
   }
 }

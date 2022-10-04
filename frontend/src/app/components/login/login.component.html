@@ -3,19 +3,29 @@
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
       <span>username: user, password: 123456</span>
-      <mat-error *ngIf="!loginValid">
+      <mat-error *ngIf="loginInalid">
         The username and password were not recognized
       </mat-error>
       <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+        <input matInput
+               placeholder="Username"
+               [(ngModel)]="username"
+               name="username"
+               minlength="3"
+               required>
         <mat-error>
-          Please provide a valid username
+          Username should be at least 3 charachters long
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <input matInput
+               type="password"
+               placeholder="Password"
+               [(ngModel)]="password"
+               name="password"
+               required>
         <mat-error>
-          Please provide a valid password
+          Password is required
         </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid">Login</button>

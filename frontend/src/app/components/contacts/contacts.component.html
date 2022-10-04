@@ -1,9 +1,15 @@
 <h2>Contacts</h2>
 
-<button (click)="addContact()">Add Contact</button>
-<!-- <app-list class="book-list" (remove)="onRemove($event)" [contacts]="contacts$ | async"></app-list> -->
-<app-contact-table [contacts$]="contacts$"
-                   (onEdit)="onEdit($event)"></app-contact-table>
+<mat-form-field>
+  <input matInput
+         placeholder="Search"
+         name="search"
+         [formControl]="filter"
+>
 
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="addContact()">Add Contact</button>
 
-<app-contact-dialog></app-contact-dialog>
+<app-contact-table [contacts$]="filteredContacts$"
+                   (onEdit)="onEdit($event)">
+</app-contact-table>

@@ -13,7 +13,7 @@ const PORT = 3000;
 const DATA_PATH = __dirname.slice(process.cwd().length + 1);
 const DATA_NAME = 'db.json';
 const JWT_SECRET_KEY = 'MySecretKey';
-const JWT_EXPIRES_IN = '1h';
+const JWT_EXPIRES_IN = '1w';
 
 const server = create();
 

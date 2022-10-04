@@ -1,48 +1,39 @@
-import { Component, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContactDialog } from '@models/contact-dialog.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-dialog',
   templateUrl: './contact-dialog.component.html',
   styleUrls: ['./contact-dialog.component.scss']
 })
-export class ContactDialogComponent {
+export class ContactDialogComponent implements OnInit {
 
-  animal: string;
-  name: string;
+  form: FormGroup;
 
-  constructor(public dialog: MatDialog) {}
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+  constructor(public dialogRef: MatDialogRef<ContactDialogComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: ContactDialog) {
   }
 
-}
+  ngOnInit() {
+    this.form = new FormGroup({
+      name: new FormControl(this.data.contact?.name ?? '', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      email: new FormControl(this.data.contact?.email ?? ''),
+      phone: new FormControl(this.data.contact?.phone ?? '', Validators.pattern('[- +()0-9]+'))
+    });
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
+  }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onSave() {
+
+    this.dialogRef.close({
+      name: this.form.value['name'],
+      email: this.form.value['email'],
+      phone: this.form.value['phone'],
+    });
   }
 }
