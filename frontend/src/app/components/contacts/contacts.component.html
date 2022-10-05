@@ -1,15 +1,24 @@
-<h2>Contacts</h2>
+<mat-card>
+  <mat-card-title color="secondary">Contact list</mat-card-title>
+  <div class="flex justify-between items-center flex-wrap">
 
-<mat-form-field>
-  <input matInput
-         placeholder="Search"
-         name="search"
-         [formControl]="filter"
->
+    <mat-form-field>
 
-</mat-form-field>
-<button mat-raised-button color="primary" (click)="addContact()">Add Contact</button>
+      <input matInput
+             placeholder="Search contacts"
+             name="search"
+             [formControl]="filter"
+             appearance="fill">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
 
-<app-contact-table [contacts$]="filteredContacts$"
-                   (onEdit)="onEdit($event)">
-</app-contact-table>
+    <button mat-raised-button
+            color="primary"
+            (click)="addContact()">Add Contact
+    </button>
+  </div>
+
+  <app-contact-table [contacts$]="filteredContacts$"
+                     (onEdit)="onEdit($event)">
+  </app-contact-table>
+</mat-card>

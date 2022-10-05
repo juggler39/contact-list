@@ -5,7 +5,7 @@ import { ContactDialogComponent } from '@components/contact-dialog/contact-dialo
 import { Contact } from '@models/contact.model';
 import { Store } from '@ngrx/store';
 import { addContact, loadContacts, updateContact } from '@store/contacts.actions';
-import { combineLatest, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, tap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, map, Observable, startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -43,8 +43,9 @@ export class ContactsComponent implements OnInit {
     const dialogRef = this.dialog.open(ContactDialogComponent,
       {
         data: {
-          title: 'Add new contact',
+          title: 'Add a new contact',
         },
+        width: '480px',
       });
     dialogRef.afterClosed().subscribe((contact: Contact) => {
       if (contact) {
@@ -62,6 +63,7 @@ export class ContactsComponent implements OnInit {
           title: 'Edit contact',
           contact: contact
         },
+        width: '480px',
       });
 
     dialogRef.afterClosed().subscribe((contact: Contact) => {

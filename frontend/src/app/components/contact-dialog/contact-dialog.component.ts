@@ -23,7 +23,8 @@ export class ContactDialogComponent implements OnInit {
         Validators.minLength(3),
       ]),
       email: new FormControl(this.data.contact?.email ?? ''),
-      phone: new FormControl(this.data.contact?.phone ?? '', Validators.pattern('[- +()0-9]+'))
+      phone: new FormControl(this.data.contact?.phone ?? '',
+        Validators.pattern('^[\+]?[- ()0-9]+'))
     });
 
   }

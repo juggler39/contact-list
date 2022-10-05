@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +14,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [CommonModule,
-    FlexLayoutModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -29,7 +27,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatPaginatorModule],
   exports: [
     CommonModule,
-    FlexLayoutModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,

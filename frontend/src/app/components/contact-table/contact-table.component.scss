@@ -1,7 +1,9 @@
+@import 'variables';
+@import 'mixin';
+
 table {
   width: 100%;
 }
-
 
 .mat-table {
   overflow: auto;
@@ -11,11 +13,17 @@ table {
   display: none;
 }
 
-@media (max-width: 600px) {
+@include below($desktop) {
   .mobile-label {
     width: 80px;
     display: inline-block;
     font-weight: bold;
+  }
+
+  .mat-table {
+    max-width: 100%;
+    width: max-content;
+    margin: auto;
   }
 
   .mat-header-row {
@@ -28,5 +36,22 @@ table {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 24px;
+    border-bottom: 1px solid grey;
+  }
+
+  td {
+    &.mat-cell {
+      font-size: 1rem;
+      border-bottom: none;
+      word-wrap: break-word;
+      &:first-of-type {
+        padding-left: 0;
+      }
+      &.mat-column-actions {
+        text-align: right;
+        width: 100%;
+        padding-right: 0;
+      }
+    }
   }
 }
