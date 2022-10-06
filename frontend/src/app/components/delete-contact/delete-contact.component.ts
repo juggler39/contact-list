@@ -17,7 +17,7 @@ export class DeleteContactComponent {
   constructor(private store: Store<{ contacts: Contact[] }>, public dialog: MatDialog) { }
 
   onRemove() {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, { width: '320px' });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {

@@ -9,29 +9,21 @@ import { map, Observable, tap } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Contact list';
   isLoggedIn$: Observable<boolean>;
 
   constructor(private store: Store<{ auth: { isLoggedIn: boolean } }>) {
-
     this.isLoggedIn$ = this.store.select('auth').pipe(
-      map((x) => x.isLoggedIn),
-      tap(x => console.log(x))
+      map((state) => state.isLoggedIn),
     );
-
   }
 
   ngOnInit() {
     this.store.dispatch(checkAuth());
   }
 
-  check() {
-    this.store.dispatch(checkAuth());
-  }
-
   logout() {
-    console.log('click');
     this.store.dispatch(logout());
   }
 

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { login } from '@store/auth.actions';
+import { map, Observable } from 'rxjs';
 
 
 
@@ -12,14 +13,16 @@ import { login } from '@store/auth.actions';
 })
 export class LoginComponent {
 
-  public loginInalid = false;
+  public loginError$: Observable<boolean>;;
   public username = '';
   public password = '';
 
-  constructor(private store: Store<{ auth: { isLoggedIn: boolean } }>) { }
+  constructor(private store: Store<{ auth: { loginError: boolean } }>) { }
 
   public onSubmit(): void {
     this.store.dispatch(login({ username: this.username, password: this.password }));
-    this.loginInalid = true;
+    this.loginError$ = this.store.select('auth').pipe(
+      map((state) => state.loginError),
+    );
   }
 }

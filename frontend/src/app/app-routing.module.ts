@@ -3,6 +3,7 @@ import type { Route } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '@components/login/login.component';
 import { AuthGuard } from '@helpers/auth.guard';
+import { LoggedInGuard } from '@helpers/logged-in.guard';
 
 const appRoutes: Route[] = [
   {
@@ -11,7 +12,8 @@ const appRoutes: Route[] = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path: '**',

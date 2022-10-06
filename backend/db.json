@@ -28,12 +28,6 @@
       "id": "2tX3et3"
     },
     {
-      "name": "Test2",
-      "email": "test@example.com",
-      "phone": 123123123,
-      "id": "YMxDhOd"
-    },
-    {
       "name": "Test34r",
       "email": "test@example.com",
       "phone": 123123123,
@@ -46,10 +40,22 @@
       "id": "vP5A5SI"
     },
     {
-      "name": "Blogdsfa",
-      "email": "asd@asd.f",
-      "phone": "345",
+      "name": "Anna Vanna",
+      "email": "asd@asd.com",
+      "phone": "8 (495) 333-44-55",
       "id": "QIBFhk3"
+    },
+    {
+      "name": "Dsdfasd8",
+      "email": "sdf@sdf.5456t",
+      "phone": "3424",
+      "id": "DzhBETM"
+    },
+    {
+      "name": "Ivan Ivanych",
+      "email": "ivan@ivanych.ru",
+      "phone": "+7-923-423-23-44",
+      "id": "YaYjTD1"
     }
   ]
 }

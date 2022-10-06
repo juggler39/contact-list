@@ -2,8 +2,9 @@
   <mat-card-content>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
-      <span>username: user, password: 123456</span>
-      <mat-error *ngIf="loginInalid">
+      <p>Use this credentials for test purpose:</p>
+      <p>username: <strong>user</strong>, password: <strong>123456</strong></p>
+      <mat-error *ngIf="(loginError$|async)">
         The username and password were not recognized
       </mat-error>
       <mat-form-field>

@@ -21,6 +21,13 @@
   margin-bottom: 1rem;
 }
 
+//TEXT
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 //FLEX
 
 .flex {
@@ -37,6 +44,10 @@
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .items-center {
