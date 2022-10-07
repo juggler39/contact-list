@@ -14,11 +14,16 @@ import { authReducer } from '@store/auth.reducer';
 import { AuthEffects } from '@store/auth.effects';
 import { LoginComponent } from '@components/login/login.component';
 import { SharedModule } from './shared/shared.module';
+import { FooterComponent } from '@components/footer/footer.component';
+import { HeaderComponent } from '@components/header/header.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     AppRoutingModule,
