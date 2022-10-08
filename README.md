@@ -14,6 +14,8 @@ This app represents a personal area with contact list.
 - Template-driven forms
 - Reactive forms
 - Adaptive design
+- Typescript
+
 
 
 To run the app use the following commands:

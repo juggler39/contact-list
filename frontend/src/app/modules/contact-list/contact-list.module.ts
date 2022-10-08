@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactTableComponent,
     ContactDialogComponent,
     ConfirmDialogComponent,
-    DeleteContactComponent,
+    DeleteContactComponent
   ],
   imports: [
     SharedModule,
