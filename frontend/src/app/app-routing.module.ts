@@ -8,7 +8,8 @@ import { LoggedInGuard } from '@helpers/logged-in.guard';
 const appRoutes: Route[] = [
   {
     path: '',
-    loadChildren: () => import('./modules/contact-list/contact-list.module').then(m => m.ContactListModule), canActivate: [AuthGuard]
+    pathMatch: 'full',
+    loadChildren: () => import('./modules/contact-list/contact-list.module').then(m => m.ContactListModule), canLoad: [AuthGuard]
   },
   {
     path: 'login',

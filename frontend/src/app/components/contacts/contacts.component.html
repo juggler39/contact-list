@@ -5,10 +5,10 @@
     <mat-form-field>
 
       <input matInput
-             placeholder="Search contacts"
+             placeholder="Search for contacts"
              name="search"
-             [formControl]="filter"
-             appearance="fill">
+             appearance="fill"
+             #search>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
@@ -18,7 +18,8 @@
     </button>
   </div>
 
-  <app-contact-table [contacts$]="filteredContacts$"
+  <app-contact-table [contacts$]="contacts$"
+                     [searchQuery]="search.value"
                      (onEdit)="onEdit($event)">
   </app-contact-table>
 </mat-card>

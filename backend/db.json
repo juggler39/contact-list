@@ -10,52 +10,22 @@
   ],
   "contacts": [
     {
-      "id": "2",
-      "name": "Updated",
-      "email": "john.adams@example.com",
-      "phone": "3456456456"
+      "name": "Anna Bader",
+      "email": "anna@example.com",
+      "phone": "+7 (911) 455-22-11",
+      "id": 1
     },
     {
-      "name": "Uphg",
-      "email": "test@xample.com",
-      "phone": "+12-31231-23",
-      "id": "VO_Jlv4"
-    },
-    {
-      "name": "Update Rwerw sdf",
-      "email": "test@example.com",
-      "phone": "+1231-123",
-      "id": "2tX3et3"
-    },
-    {
-      "name": "Test34r sdfasdf",
-      "email": "test@example.com",
-      "phone": 123123123,
-      "id": "Ytk45m0"
-    },
-    {
-      "name": "Ilyad",
-      "email": "dfgdfghh@eeee.tt",
-      "phone": 12312,
-      "id": "vP5A5SI"
-    },
-    {
-      "name": "Anna Vanna",
-      "email": "asd@asd.com",
+      "name": "Dmitry Green",
+      "email": "dmitry.green@yandex.ru",
       "phone": "8 (495) 333-44-55",
-      "id": "QIBFhk3"
+      "id": 2
     },
     {
-      "name": "Dsdfasd8",
-      "email": "sdf@sdf.5456t",
-      "phone": "3424",
-      "id": "DzhBETM"
-    },
-    {
-      "name": "Ivan Ivanych",
-      "email": "ivan@ivanych.ru",
-      "phone": "+7-923-423-23-44",
-      "id": "YaYjTD1"
+      "name": "John Dow",
+      "email": "john.dow@gmail.com",
+      "phone": "+12-31231-23",
+      "id": 3
     }
   ]
 }

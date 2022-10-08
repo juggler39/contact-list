@@ -6,14 +6,14 @@ import { StorageService } from '@services/storage.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const user = this.storageService.getUser();
 
     req = req.clone({
-      setHeaders: {Authorization: `Bearer ${user.accessToken}`}
+      setHeaders: { Authorization: `Bearer ${user.accessToken}` }
     });
 
     return next.handle(req);

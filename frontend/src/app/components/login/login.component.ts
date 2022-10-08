@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { login } from '@store/auth.actions';
 import { map, Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

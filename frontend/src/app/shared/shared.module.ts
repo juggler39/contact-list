@@ -12,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [CommonModule,
@@ -25,8 +26,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatMenuModule,
     MatFormFieldModule,
     MatTableModule,
-    MatSortModule,
-    MatPaginatorModule],
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatSortModule,],
   exports: [
     CommonModule,
     FormsModule,
@@ -39,8 +41,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatMenuModule,
     MatFormFieldModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
     MatSortModule,
-    MatPaginatorModule
   ]
 })
 export class SharedModule { }

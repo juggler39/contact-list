@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { StorageService } from '@services/storage.service';
+import { CanActivate } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable, take, map } from 'rxjs';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
+
 export class LoggedInGuard implements CanActivate {
 
-  constructor(private storageService: StorageService, private router: Router) { };
+  constructor(private store: Store<{ auth: { isLoggedIn: boolean } }>) { }
 
-  canActivate(): boolean {
-    const isLoggedIn = this.storageService.isLoggedIn();
-    return !isLoggedIn;
+  canActivate(): Observable<boolean> {
+    return this.store.pipe(
+      select('auth'),
+      take(1),
+      map((authState) => !authState.isLoggedIn)
+    )
   }
 }

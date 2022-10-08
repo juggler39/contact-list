@@ -22,9 +22,4 @@ export class AuthService {
       httpOptions
     );
   }
-
-  logout(): Observable<any> {
-    return this.http.post(this.constants.AUTH_API + 'logout', {}, httpOptions);
-  }
-
 }

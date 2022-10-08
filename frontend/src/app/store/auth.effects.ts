@@ -6,6 +6,8 @@ import { of } from 'rxjs';
 import { AuthService } from '@services/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { StorageService } from '@services/storage.service';
+import { MessageService } from '@services/message.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 interface UserData {
   jwtToken: string;
@@ -18,6 +20,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private storageService: StorageService,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
@@ -28,15 +31,25 @@ export class AuthEffects {
         this.storageService.saveUser(userData);
         return loginComplete()
       }),
-      catchError(() => of(loginError()))
+      catchError((error: HttpErrorResponse) => {
+        return of(loginError({ message: error.message }));
+      })
     ))
   ));
+
+  loginError$ = createEffect(() => this.actions$.pipe(
+    ofType(loginError),
+    map((error) => {
+      this.messageService.show(error.message)
+    })),
+    { dispatch: false }
+  );
 
   loginComplete$ = createEffect(() => this.actions$.pipe(
     ofType(loginComplete),
     tap(() => {
       this.router.navigate(['']);
-    }),),
+    })),
     { dispatch: false }
   );
 

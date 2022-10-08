@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogComponent } from '@components/contact-dialog/contact-dialog.component';
 import { Contact } from '@models/contact.model';
 import { Store } from '@ngrx/store';
 import { addContact, loadContacts, updateContact } from '@store/contacts.actions';
-import { combineLatest, debounceTime, distinctUntilChanged, map, Observable, startWith, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -16,24 +15,7 @@ import { combineLatest, debounceTime, distinctUntilChanged, map, Observable, sta
 export class ContactsComponent implements OnInit {
 
   contacts$: Observable<Contact[]> = this.store.select(state => state.contacts);
-  filteredContacts$: Observable<Contact[]>;
-  filter: FormControl;
-  filter$: Observable<string>;
-
-  constructor(private store: Store<{ contacts: Contact[] }>, public dialog: MatDialog) {
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    this.filteredContacts$ = combineLatest([this.contacts$, this.filter$])
-      .pipe(
-        debounceTime(200),
-        distinctUntilChanged(),
-        map(([contacts, searchQuery]) =>
-          contacts.filter(contact =>
-            contact.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 ||
-            contact.email.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 ||
-            contact.phone.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
-          )))
-  }
+  constructor(private store: Store<{ contacts: Contact[] }>, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.store.dispatch(loadContacts());
@@ -50,7 +32,6 @@ export class ContactsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((contact: Contact) => {
       if (contact) {
         this.store.dispatch(addContact({ contact: contact }));
-        this.store.dispatch(loadContacts());
       }
     });
   }

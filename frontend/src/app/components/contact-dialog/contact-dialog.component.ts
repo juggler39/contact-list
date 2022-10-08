@@ -30,7 +30,6 @@ export class ContactDialogComponent implements OnInit {
   }
 
   onSave() {
-
     this.dialogRef.close({
       name: this.form.value['name'],
       email: this.form.value['email'],
