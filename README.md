@@ -2,6 +2,11 @@
 
 This app represents a personal area with contact list.
 
+![image](https://user-images.githubusercontent.com/61351959/194749912-be0ed2c6-ee9b-4e58-9eff-cfe13b333f92.png)
+![image](https://user-images.githubusercontent.com/61351959/194750039-c4c20862-d5d2-45fe-aa65-2296e5efb62f.png)
+![image](https://user-images.githubusercontent.com/61351959/194750166-0ccd3ba2-bf12-4f1c-8f34-a11a30f0a4cb.png)
+
+
 -   JWT authorisation
 -   Shared module
 -   Feature module
