@@ -2,7 +2,7 @@ import { Contact } from '@models/contact.model';
 import { createReducer, on } from '@ngrx/store';
 import { loadContactsSuccess } from './contacts.actions';
 
-export const initialState: ReadonlyArray<Contact> = [];
+export const initialState: readonly Contact[] = [];
 
 export const contactsReducer = createReducer(
   initialState,

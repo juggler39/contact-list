@@ -36,8 +36,14 @@
     {
       "name": "Joseph Biden",
       "email": "joe.biden@whitehouse.com",
-      "phone": "911",
+      "phone": "911-911",
       "id": 5
+    },
+    {
+      "name": "Elon Musk",
+      "email": "musk.elon@yandex.ru",
+      "phone": "+27 (123)-(45)-(678)",
+      "id": 6
     }
   ]
 }

@@ -8,11 +8,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { StorageService } from '@services/storage.service';
 import { MessageService } from '@services/message.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
-interface UserData {
-  jwtToken: string;
-  userId: number;
-}
+import { User } from '@models/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -27,7 +23,7 @@ export class AuthEffects {
   login$ = createEffect(() => this.actions$.pipe(
     ofType(login),
     switchMap((user) => this.authService.login(user.username, user.password).pipe(
-      map((userData: UserData) => {
+      map((userData: User) => {
         this.storageService.saveUser(userData);
         return loginComplete()
       }),

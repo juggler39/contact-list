@@ -9,20 +9,20 @@ import { AppConstants } from '../app.constants';
 export class ContactsService {
   constructor(private http: HttpClient, private constants: AppConstants) { }
 
+  addContact(contact: Partial<Contact>): Observable<Contact> {
+    return this.http.post<Contact>(this.constants.AUTH_API + 'contacts', contact);
+  }
+
   loadContacts(): Observable<Array<Contact>> {
     return this.http.get<Contact[]>(this.constants.AUTH_API + 'contacts', { responseType: 'json' });
   }
 
-  addContact(contact: Partial<Contact>): Observable<Contact> {
-    return this.http.post<Contact>(this.constants.AUTH_API + 'contacts',  contact );
+  updateContact(contact: Partial<Contact>): Observable<Object> {
+    return this.http.patch(this.constants.AUTH_API + 'contacts' + '/' + contact.id, contact);
   }
 
   deleteContact(contactId: string): Observable<Contact> {
     return this.http.delete<Contact>(this.constants.AUTH_API + 'contacts' + '/' + contactId);
   }
-
-  updateContact(contact: Partial<Contact>): Observable<any> {
-    return this.http.patch(this.constants.AUTH_API + 'contacts' + '/' + contact.id, contact);
-}
 }
 

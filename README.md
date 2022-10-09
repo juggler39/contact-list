@@ -38,11 +38,13 @@ To run the app use the following commands:
 -   in "/backend" folder run
 
 `npm install` to install dependences, then
+
 `npm run start` to start the JSON server
 
 -   in "/frontend" folder run
 
 `npm install` to install dependences, then
+
 `npm run start` to start the Angular application
 
-The application was tested on node **v16.15.1**, but should work with any contemporary node version, as well with yarn.
+The application was tested on node.js **v16.15.1**, but should work with any contemporary node.js version, as well with yarn.
