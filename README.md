@@ -1,4 +1,4 @@
-# contact-list
+# Contact list
 
 This app represents a personal area with contact list.
 
@@ -11,11 +11,11 @@ Login page:
 and Contacts page:
 ![image](https://user-images.githubusercontent.com/61351959/194750039-c4c20862-d5d2-45fe-aa65-2296e5efb62f.png)
 
-the table is fully adaptive and looks good on mobile devises too:
+the table is fully adaptive and looks good on mobile devices too:
 ![image](https://user-images.githubusercontent.com/61351959/194750166-0ccd3ba2-bf12-4f1c-8f34-a11a30f0a4cb.png)
 
 
-The App uses these features:
+The App is built with Angular and utilizes these features:
 
 -   JWT authorisation
 -   Shared module
