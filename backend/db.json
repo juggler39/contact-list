@@ -26,6 +26,18 @@
       "email": "john.dow@gmail.com",
       "phone": "+12-31231-23",
       "id": 3
+    },
+    {
+      "name": "Arnold Schwarzenegger",
+      "email": "arni@gmail.com",
+      "phone": "+49 123 456 78",
+      "id": 4
+    },
+    {
+      "name": "Joseph Biden",
+      "email": "joe.biden@whitehouse.com",
+      "phone": "911",
+      "id": 5
     }
   ]
 }
